@@ -1,0 +1,872 @@
+{
+  "type": "FeatureCollection",
+  "name": "道路设施",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "id": 1,
+      "properties": {
+        "fid": 1,
+        "id": "FAC-001",
+        "type": "红绿灯",
+        "direction": "东",
+        "height": null,
+        "model": null,
+        "remark": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.41858420889352,
+          28.656208763547973
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 2,
+      "properties": {
+        "fid": 2,
+        "id": "FAC-002",
+        "type": "红绿灯",
+        "direction": "东",
+        "height": null,
+        "model": null,
+        "remark": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.41866853449797,
+          28.65654242787805
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 3,
+      "properties": {
+        "fid": 3,
+        "id": "FAC-003",
+        "type": "红绿灯",
+        "direction": "南",
+        "height": null,
+        "model": null,
+        "remark": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.41859459437146,
+          28.656506441424426
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 4,
+      "properties": {
+        "fid": 4,
+        "id": "FAC-004",
+        "type": "红绿灯",
+        "direction": "南",
+        "height": null,
+        "model": null,
+        "remark": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4189181916052,
+          28.656445251607312
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 5,
+      "properties": {
+        "fid": 5,
+        "id": "FAC-005",
+        "type": "红绿灯",
+        "direction": "北",
+        "height": null,
+        "model": null,
+        "remark": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.41853568003005,
+          28.656262540098464
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 6,
+      "properties": {
+        "fid": 6,
+        "id": "FAC-006",
+        "type": "红绿灯",
+        "direction": "北",
+        "height": null,
+        "model": null,
+        "remark": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.41885679656744,
+          28.656199342245706
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 7,
+      "properties": {
+        "fid": 7,
+        "id": "FAC-007",
+        "type": "红绿灯",
+        "direction": "西",
+        "height": null,
+        "model": null,
+        "remark": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.41877617848874,
+          28.656174802434496
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 8,
+      "properties": {
+        "fid": 8,
+        "id": "FAC-008",
+        "type": "红绿灯",
+        "direction": "西",
+        "height": null,
+        "model": null,
+        "remark": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.41885705841612,
+          28.656511594161124
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 9,
+      "properties": {
+        "fid": 9,
+        "id": "FAC-009",
+        "type": "红绿灯",
+        "direction": "西",
+        "height": null,
+        "model": null,
+        "remark": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.41843270272291,
+          28.656281661385552
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 10,
+      "properties": {
+        "fid": 10,
+        "id": "FAC-010",
+        "type": "红绿灯",
+        "direction": "东西",
+        "height": null,
+        "model": null,
+        "remark": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.41899558614496,
+          28.65642977662344
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 11,
+      "properties": {
+        "fid": 11,
+        "id": "FAC-011",
+        "type": "红绿灯",
+        "direction": "南北",
+        "height": null,
+        "model": null,
+        "remark": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.41848051669183,
+          28.656427950142277
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 12,
+      "properties": {
+        "fid": 12,
+        "id": "FAC-012",
+        "type": "红绿灯",
+        "direction": "南北",
+        "height": null,
+        "model": null,
+        "remark": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4189745085043,
+          28.656284773875264
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 13,
+      "properties": {
+        "fid": 13,
+        "id": "FAC-013",
+        "type": "单臂悬杆",
+        "direction": "西",
+        "height": null,
+        "model": null,
+        "remark": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.41889710242857,
+          28.656616145648776
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 14,
+      "properties": {
+        "fid": 14,
+        "id": "FAC-014",
+        "type": "单臂悬杆",
+        "direction": "南",
+        "height": null,
+        "model": null,
+        "remark": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.41847714688825,
+          28.65654344060755
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 15,
+      "properties": {
+        "fid": 15,
+        "id": "FAC-015",
+        "type": "单臂悬杆",
+        "direction": "东",
+        "height": null,
+        "model": null,
+        "remark": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.41854339407412,
+          28.656109845172015
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 16,
+      "properties": {
+        "fid": 16,
+        "id": "FAC-016",
+        "type": "单臂悬杆",
+        "direction": "北",
+        "height": null,
+        "model": null,
+        "remark": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.41896757450951,
+          28.656173557419972
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 17,
+      "properties": {
+        "fid": 17,
+        "id": "FAC-017",
+        "type": "路灯",
+        "direction": "面向道路",
+        "height": null,
+        "model": null,
+        "remark": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.41911807964674,
+          28.656547692321837
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 18,
+      "properties": {
+        "fid": 18,
+        "id": "FAC-018",
+        "type": "路灯",
+        "direction": "面向道路",
+        "height": null,
+        "model": null,
+        "remark": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.41851572040656,
+          28.656676471894965
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 19,
+      "properties": {
+        "fid": 19,
+        "id": "FAC-019",
+        "type": "路灯",
+        "direction": "面向道路",
+        "height": null,
+        "model": null,
+        "remark": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.41836849244295,
+          28.656158107836507
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 20,
+      "properties": {
+        "fid": 20,
+        "id": "FAC-020",
+        "type": "路灯",
+        "direction": "面向道路",
+        "height": null,
+        "model": null,
+        "remark": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4189328488831,
+          28.65601721212841
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 21,
+      "properties": {
+        "fid": 21,
+        "id": "FAC-021",
+        "type": "路灯",
+        "direction": "面向道路",
+        "height": null,
+        "model": null,
+        "remark": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.41823694385312,
+          28.656657380244813
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 22,
+      "properties": {
+        "fid": 22,
+        "id": "FAC-022",
+        "type": "标牌",
+        "direction": "南",
+        "height": null,
+        "model": null,
+        "remark": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.41889670773432,
+          28.656614005982885
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 23,
+      "properties": {
+        "fid": 23,
+        "id": "FAC-023",
+        "type": "标牌",
+        "direction": "南",
+        "height": null,
+        "model": null,
+        "remark": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.41885456470537,
+          28.656621152528242
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 24,
+      "properties": {
+        "fid": 24,
+        "id": "FAC-024",
+        "type": "标牌",
+        "direction": "东",
+        "height": null,
+        "model": null,
+        "remark": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.41846119642142,
+          28.65647415000494
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 25,
+      "properties": {
+        "fid": 25,
+        "id": "FAC-025",
+        "type": "标牌",
+        "direction": "东",
+        "height": null,
+        "model": null,
+        "remark": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.41848638109747,
+          28.656426609333607
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 26,
+      "properties": {
+        "fid": 26,
+        "id": "FAC-026",
+        "type": "标牌",
+        "direction": "西",
+        "height": null,
+        "model": null,
+        "remark": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.418970262146,
+          28.65628568281762
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 27,
+      "properties": {
+        "fid": 27,
+        "id": "FAC-027",
+        "type": "标牌",
+        "direction": "西",
+        "height": null,
+        "model": null,
+        "remark": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.41898062859909,
+          28.656233280472357
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 28,
+      "properties": {
+        "fid": 28,
+        "id": "FAC-028",
+        "type": "标牌",
+        "direction": "北",
+        "height": null,
+        "model": null,
+        "remark": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.41858921402181,
+          28.656101771650512
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 29,
+      "properties": {
+        "fid": 29,
+        "id": "FAC-029",
+        "type": "标牌",
+        "direction": "北",
+        "height": null,
+        "model": null,
+        "remark": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.41861311260892,
+          28.656096345093847
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 30,
+      "properties": {
+        "fid": 30,
+        "id": "FAC-030",
+        "type": "电子屏",
+        "direction": "南",
+        "height": null,
+        "model": null,
+        "remark": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.41887540672737,
+          28.656617562277948
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 31,
+      "properties": {
+        "fid": 31,
+        "id": "FAC-031",
+        "type": "电子屏",
+        "direction": "东",
+        "height": null,
+        "model": null,
+        "remark": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.41847190007825,
+          28.656521132350477
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 32,
+      "properties": {
+        "fid": 32,
+        "id": "FAC-032",
+        "type": "电子屏",
+        "direction": "西",
+        "height": null,
+        "model": null,
+        "remark": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.41897186756168,
+          28.656195603231144
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 33,
+      "properties": {
+        "fid": 33,
+        "id": "FAC-033",
+        "type": "电子屏",
+        "direction": "北",
+        "height": null,
+        "model": null,
+        "remark": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.41856936706243,
+          28.656104620069687
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 34,
+      "properties": {
+        "fid": 34,
+        "id": "FAC-034",
+        "type": "红绿灯",
+        "direction": null,
+        "height": null,
+        "model": null,
+        "remark": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.41883967679807,
+          28.656623888239235
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 35,
+      "properties": {
+        "fid": 35,
+        "id": "FAC-035",
+        "type": "红绿灯",
+        "direction": null,
+        "height": null,
+        "model": null,
+        "remark": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.41882875830083,
+          28.656626054258275
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 36,
+      "properties": {
+        "fid": 36,
+        "id": "FAC-036",
+        "type": "红绿灯",
+        "direction": null,
+        "height": null,
+        "model": null,
+        "remark": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.418465440795,
+          28.656494705314913
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 37,
+      "properties": {
+        "fid": 37,
+        "id": "FAC-037",
+        "type": "红绿灯",
+        "direction": null,
+        "height": null,
+        "model": null,
+        "remark": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.41845638320223,
+          28.6564492837122
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 38,
+      "properties": {
+        "fid": 38,
+        "id": "FAC-038",
+        "type": "红绿灯",
+        "direction": null,
+        "height": null,
+        "model": null,
+        "remark": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.41860340965187,
+          28.656097737656445
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 39,
+      "properties": {
+        "fid": 39,
+        "id": "FAC-039",
+        "type": "红绿灯",
+        "direction": null,
+        "height": null,
+        "model": null,
+        "remark": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.41862156943444,
+          28.65609433271584
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 40,
+      "properties": {
+        "fid": 40,
+        "id": "FAC-040",
+        "type": "红绿灯",
+        "direction": null,
+        "height": null,
+        "model": null,
+        "remark": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.41898406349743,
+          28.656245765703208
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 41,
+      "properties": {
+        "fid": 41,
+        "id": "FAC-041",
+        "type": "红绿灯",
+        "direction": null,
+        "height": null,
+        "model": null,
+        "remark": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.41897807578921,
+          28.65622066864242
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 42,
+      "properties": {
+        "fid": 42,
+        "id": "FAC-042",
+        "type": "摄像头",
+        "direction": "西",
+        "height": null,
+        "model": null,
+        "remark": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.41846439502177,
+          28.656490263114947
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 43,
+      "properties": {
+        "fid": 43,
+        "id": "FAC-043",
+        "type": "摄像头",
+        "direction": "东",
+        "height": null,
+        "model": null,
+        "remark": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.41897979323797,
+          28.656226911257903
+        ]
+      }
+    }
+  ]
+}

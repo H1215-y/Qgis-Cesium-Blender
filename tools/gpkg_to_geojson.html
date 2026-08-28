@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>GeoPackage 批量重投影工具</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.3/sql-wasm.js"></script>
+  <style>
+    :root{font-family:Segoe UI,Microsoft YaHei,sans-serif;color:#253746;background:#eef2f5}
+    *{box-sizing:border-box}body{margin:0}.wrap{max-width:960px;margin:34px auto;padding:0 18px}
+    h1{margin:0 0 7px;font-size:27px}.sub{color:#667985;margin-bottom:21px}.panel{background:#fff;border:1px solid #d8e0e6;border-radius:12px;padding:20px;margin:14px 0;box-shadow:0 3px 12px #23384d0d}
+    .drop{display:block;width:100%;border:2px dashed #9aabb8;border-radius:10px;padding:35px 20px;text-align:center;background:#f8fafb;cursor:pointer}.drop:hover{border-color:#3e7da3;background:#f1f8fb}.drop input{display:none}.big{font-size:19px;font-weight:600}.hint{font-size:13px;color:#70818c;margin-top:8px}
+    .file{margin:13px 0;color:#526976}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:15px}button{border:0;border-radius:7px;padding:10px 16px;background:#3d718f;color:#fff;cursor:pointer;font-size:14px}button.secondary{background:#71818c}button:disabled{opacity:.45;cursor:not-allowed}
+    #status{margin-top:13px;min-height:20px;color:#536873}.summary{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.stat{background:#f3f6f8;border-radius:8px;padding:13px}.stat b{display:block;font-size:23px;color:#315f79}.stat span{font-size:12px;color:#70808b}table{border-collapse:collapse;width:100%;font-size:13px}th,td{padding:9px 7px;border-bottom:1px solid #e5eaed;text-align:left}th{background:#f7f9fa;color:#566874}.ok{color:#2b7a49}.warn{color:#a66515}.note{font-size:13px;line-height:1.7;color:#60727d}
+    @media(max-width:650px){.summary{grid-template-columns:1fr 1fr}.wrap{margin:16px auto}}
+  </style>
+</head>
+<body><main class="wrap">
+  <h1>GeoPackage 批量重投影工具</h1>
+  <div class="sub">选择一个 .gpkg，在浏览器本地批量转换为 EPSG:4326/WGS84 GeoJSON。</div>
+  <section class="panel">
+    <label class="drop"><input id="input" type="file" accept=".gpkg,application/geopackage+sqlite3"><div class="big">点击选择 GeoPackage 文件</div><div class="hint">当前支持 EPSG:32651 → EPSG:4326；原几何和属性会保留</div></label>
+    <div id="file" class="file">尚未选择文件</div>
+    <div class="actions"><button id="run" disabled>开始批量重投影</button><button id="clear" class="secondary">清空</button></div>
+    <div id="status">请选择一个 .gpkg 文件</div>
+  </section>
+  <section class="panel"><div class="summary"><div class="stat"><b id="layers">0</b><span>图层</span></div><div class="stat"><b id="features">0</b><span>要素</span></div><div class="stat"><b id="downloads">0</b><span>可下载文件</span></div></div><div style="overflow:auto;margin-top:16px"><table><thead><tr><th>图层</th><th>要素数</th><th>源 CRS</th><th>目标 CRS</th><th>状态</th></tr></thead><tbody id="report"></tbody></table></div></section>
+  <section class="panel note">说明：SQLite/WASM 不是你的数据文件，而是浏览器读取 GeoPackage 所需的小型运行组件。第一次点击转换时需要联网加载它；转换过程中数据不会上传。每个图层会单独下载为 GeoJSON，文件名使用英文以方便 Cesium 使用。</section>
+</main>
+<script>
+const input=document.getElementById('input'),run=document.getElementById('run'),clear=document.getElementById('clear'),fileBox=document.getElementById('file'),status=document.getElementById('status'),report=document.getElementById('report');let chosen=null,outputs=[];
+const q=s=>'"'+s.replaceAll('"','""')+'"';
+const fileNames={'交通岛':'traffic_island.geojson','人行道':'sidewalk.geojson','护栏':'guardrail.geojson','标线':'marking.geojson','绿化带':'greenbelt.geojson','道路中线':'road_centerline.geojson','道路范围':'road_surface.geojson','道路设施':'road_facility.geojson'};
+function rd(v,o,t){return new DataView(v.buffer,v.byteOffset,v.byteLength).getUint32(o,t)}
+function parseWkb(a,pos){const little=a[pos++]===1,fmt=little?'<':'>';const d=new DataView(a.buffer,a.byteOffset,a.byteLength);const u=()=>{const n=d.getUint32(pos,little);pos+=4;return n};const typ=u(),base=typ%1000;const z=typ>=1000&&typ%1000>=1000&&typ%1000<2000,m=typ>=2000&&typ%1000<3000||typ%1000>=3000;const dims=2+(z?1:0)+(m?1:0);const pt=()=>{const x=d.getFloat64(pos,little),y=d.getFloat64(pos+8,little);pos+=8*dims;return[x,y]};if(base===1)return['Point',pt()];if(base===2){const n=u(),c=[];for(let i=0;i<n;i++)c.push(pt());return['LineString',c]}if(base===3){const n=u(),r=[];for(let i=0;i<n;i++){const zc=u(),ring=[];for(let j=0;j<zc;j++)ring.push(pt());r.push(ring)}return['Polygon',r]}throw Error('暂不支持的几何类型 '+typ)}
+function gpkgGeom(a){if(!a||a.length<8)throw Error('几何为空');const env=(a[3]>>1)&7;const skip={0:0,1:32,2:48,3:48,4:64}[env]??0;return parseWkb(a,8+skip)}
+function utm(x,y){const A=6378137,e=0.0066943799901413165,k=.9996,e1=(1-Math.sqrt(1-e))/(1+Math.sqrt(1-e)),m=y/k,mu=m/(A*(1-e/4-3*e**2/64-5*e**3/256)),p=mu+(3*e1/2-27*e1**3/32)*Math.sin(2*mu)+(21*e1**2/16-55*e1**4/32)*Math.sin(4*mu)+(151*e1**3/96)*Math.sin(6*mu)+(1097*e1**4/512)*Math.sin(8*mu),ep=e/(1-e),c=ep*Math.cos(p)**2,t=Math.tan(p)**2,n=A/Math.sqrt(1-e*Math.sin(p)**2),r=A*(1-e)/(1-e*Math.sin(p)**2)**1.5,dd=(x-500000)/(n*k),lat=p-n*Math.tan(p)/r*(dd**2/2-(5+3*t+10*c-4*c*c-9*ep)*dd**4/24+(61+90*t+298*c+45*t*t-252*ep-3*c*c)*dd**6/720),lon=(dd-(1+2*t+c)*dd**3/6+(5-2*c+28*t-3*c*c+8*ep+24*t*t)*dd**5/120)/Math.cos(p);return[(lon*180/Math.PI)+123,lat*180/Math.PI]}
+function transform(g,srs){const fn=srs===32651?utm:p=>p;const[k,c]=g;if(k==='Point')return[k,fn(c)];if(k==='LineString')return[k,c.map(fn)];return[k,c.map(r=>r.map(fn))]}
+function gj(g){return{type:g[0],coordinates:g[1]}}
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function download(name,data){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/geo+json'}));a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
+input.onchange=()=>{chosen=input.files[0]||null;fileBox.textContent=chosen?`${chosen.name}（${Math.round(chosen.size/1024)} KB）`:'尚未选择文件';run.disabled=!chosen;status.textContent=chosen?'已选择文件，点击“开始批量重投影”':'请选择一个 .gpkg 文件'};
+run.onclick=async()=>{if(!chosen)return;run.disabled=true;report.innerHTML='';outputs=[];try{status.textContent='正在加载 SQLite 组件…';const init=await initSqlJs({locateFile:f=>'https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.3/'+f});status.textContent='正在读取 GeoPackage 图层…';const db=new init.Database(new Uint8Array(await chosen.arrayBuffer()));const contents=db.exec("SELECT table_name FROM gpkg_contents WHERE data_type='features' ORDER BY table_name")[0];if(!contents)throw Error('没有找到矢量图层');let total=0;for(const [table] of contents.values){try{const srs=db.exec(`SELECT srs_id FROM gpkg_geometry_columns WHERE table_name=${q(table)}`)[0]?.values[0]?.[0];if(![32651,4326].includes(srs))throw Error('不支持源 CRS '+srs);const ti=db.exec(`PRAGMA table_info(${q(table)})`)[0].values;const cols=ti.map(r=>r[1]),gi=cols.indexOf('geom'),rows=db.exec(`SELECT * FROM ${q(table)} ORDER BY fid`)[0]?.values||[];const feats=rows.map(row=>{const geom=transform(gpkgGeom(row[gi]),srs);const props={};cols.forEach((c,i)=>{if(c!=='geom')props[c]=row[i]??null});return{type:'Feature',id:row[0],properties:props,geometry:gj(geom)}});const fc={type:'FeatureCollection',name:table,crs:{type:'name',properties:{name:'urn:ogc:def:crs:OGC:1.3:CRS84'}},features:feats};const name=fileNames[table]||table.replace(/[^a-zA-Z0-9_-]+/g,'_')+'.geojson';outputs.push({name,data:fc});total+=feats.length;report.insertAdjacentHTML('beforeend',`<tr><td>${esc(table)}</td><td>${feats.length}</td><td>EPSG:${srs}</td><td>EPSG:4326</td><td class="ok">完成</td></tr>`)}catch(e){report.insertAdjacentHTML('beforeend',`<tr><td>${esc(table)}</td><td colspan="4" class="warn">失败：${esc(e.message)}</td></tr>`)}}document.getElementById('layers').textContent=outputs.length;document.getElementById('features').textContent=total;document.getElementById('downloads').textContent=outputs.length;status.textContent=`完成：${outputs.length} 个图层、${total} 个要素；正在下载…`;outputs.forEach(x=>download(x.name,x.data));status.textContent=`完成：${outputs.length} 个 GeoJSON 已开始下载`}catch(e){status.textContent='处理失败：'+e.message}finally{run.disabled=!chosen}};
+clear.onclick=()=>{chosen=null;outputs=[];input.value='';fileBox.textContent='尚未选择文件';report.innerHTML='';['layers','features','downloads'].forEach(id=>document.getElementById(id).textContent='0');run.disabled=true;status.textContent='请选择一个 .gpkg 文件'};
+</script></body></html>

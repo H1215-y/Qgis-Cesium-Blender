@@ -1,0 +1,76 @@
+<div id="cesiumContainer"></div>
+
+<div class="cesium-toolbar">
+  <label class="file-button">
+    选择 GeoJSON
+    <input
+      id="geojsonFile"
+      type="file"
+      accept=".geojson,application/geo+json,application/json"
+      multiple
+    >
+  </label>
+
+  <button id="clearButton" type="button">
+    清空图层
+  </button>
+
+  <span id="status">请选择 GeoJSON 文件</span>
+</div>
+
+<style>
+html,
+body,
+#cesiumContainer {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.cesium-toolbar {
+  position: absolute;
+  z-index: 10;
+  top: 10px;
+  left: 10px;
+
+  display: flex;
+  gap: 8px;
+  align-items: center;
+
+  padding: 8px 10px;
+
+  color: #fff;
+  background: rgba(30, 35, 42, 0.92);
+  border-radius: 4px;
+  font: 14px/1.4 Arial, sans-serif;
+}
+
+.file-button,
+#clearButton {
+  cursor: pointer;
+  border: 1px solid #6f7b88;
+  border-radius: 3px;
+  padding: 6px 10px;
+  color: #fff;
+  background: #3f4d5b;
+}
+
+.file-button:hover,
+#clearButton:hover {
+  background: #536577;
+}
+
+.file-button input {
+  display: none;
+}
+
+#status {
+  max-width: 420px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #d8e0e8;
+}
+</style>
